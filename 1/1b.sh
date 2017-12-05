@@ -1,43 +1,43 @@
-    #!/bin/bash
+#!/bin/bash
 
-    function do_magic {
-      X=$1
-      STEP=$2
-      I=0
-      RES=0
+function do_magic {
+  X=$1
+  STEP=$2
+  I=0
+  RES=0
 
-      while [  $I -lt ${#X} ]; do
-        let Ip=I+STEP
-        N=${X:$I:1}
-        Np=${X:$Ip:1}
+  while [  $I -lt ${#X} ]; do
+    let Ip=I+STEP
+    N=${X:$I:1}
+    Np=${X:$Ip:1}
 
-        if [ "$Np" == "" ]; then
-          let Ip=Ip-STEP-STEP
-          Np=${X:$Ip:1}
-        fi
+    if [ "$Np" == "" ]; then
+      let Ip=Ip-STEP-STEP
+      Np=${X:$Ip:1}
+    fi
 
-        if [ "$N" == "$Np" ]; then
-          let RES=RES+N
-        fi
+    if [ "$N" == "$Np" ]; then
+      let RES=RES+N
+    fi
 
-        let I=I+1
-      done
+    let I=I+1
+  done
 
-      echo "$RES"
-    }
+  echo "$RES"
+}
 
-    # MAIN part one
-    for N in 1122 1111 1234 91212129; do
-      do_magic $N 1
-    done
+# MAIN part one
+for N in 1122 1111 1234 91212129; do
+  do_magic $N 1
+done
 
-    echo
+echo
 
-    # MAIN part two
-    for N in 1212 1221 123425 123123 12131415; do
-      let X=${#N}/2
-      do_magic $N $X
-    done
+# MAIN part two
+for N in 1212 1221 123425 123123 12131415; do
+  let X=${#N}/2
+  do_magic $N $X
+done
 
 echo
 
