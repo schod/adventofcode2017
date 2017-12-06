@@ -5,7 +5,7 @@ function do_magic {
   while read L; do
     HASH=""
     for P in $L; do
-      H=$(echo $P | sed 's/\(.\)/\1\n/g' | grep -v "^$" | sort | uniq -c |sed 's/[ ]//g' | tr -d '\n')
+      H=$(echo $P | grep -o . | sort | uniq -c |sed 's/[ ]//g' | tr -d '\n')
       HASH=$(printf "$H\n$HASH")
     done
     UNIQ=$(echo "$HASH"|sort|uniq -c | grep -v "^ *1 " | wc -l)
