@@ -6,10 +6,10 @@ function do_magic {
   I=0
   STEPS=0
 
-  while [ $I -ge 0 ] && [ $I -lt $MAX ]; do
+  while [[ $I -ge 0 && $I -lt $MAX ]]; do
     Ax=${A[I]}
 
-    if [ $Ax -ge 3 ]; then
+    if [[ $Ax -ge 3 ]]; then
       A[I]=$[${A[$I]}-1]
     else
       A[I]=$[${A[$I]}+1]
