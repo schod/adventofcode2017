@@ -1,12 +1,12 @@
 #!/bin/bash
 
 function do_magic {
-  A=( $( cat $1 ) )
+  A=( $( < $1 ) )
   MAX=${#A[@]}
   I=0
   STEPS=0
 
-  while [ $I -ge 0 ] && [ $I -lt $MAX ]; do
+  while [[ ${A[I]} ]]; do
     Ax=${A[I]}
     A[I]=$[${A[$I]}+1]
     I=$[I+Ax]

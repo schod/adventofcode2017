@@ -1,12 +1,15 @@
 #!/bin/bash
 
 function do_magic {
-  A=( $( cat $1 ) )
+  A=( $( < $1 ) ) # TODO zkusit
   MAX=${#A[@]}
+  declare -i I
+  declare -i STEPS
+  declare -i Ax
   I=0
   STEPS=0
 
-  while [[ $I -ge 0 && $I -lt $MAX ]]; do
+  while [[ ${A[I]} ]]; do
     Ax=${A[I]}
 
     if [[ $Ax -ge 3 ]]; then
@@ -15,8 +18,8 @@ function do_magic {
       A[I]=$[${A[$I]}+1]
     fi
 
-    I=$[I+Ax]
-    STEPS=$[STEPS+1]
+    I=I+Ax
+    STEPS=STEPS+1
   done
   echo $STEPS
 
